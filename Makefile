@@ -2,7 +2,7 @@ PROJECT_NAME := template
 
 debug ?= false
 ifeq (${debug}, true)
-	COMMON_FLAGS := -g3 -ftrapv -fsanitize=address -fsanitize=leak -fsanitize=undefined
+	COMMON_FLAGS := -g3 -fsanitize=address -fsanitize=leak -fsanitize=undefined
 else
 	COMMON_FLAGS := -O2 -D_FORTIFY_SOURCE=2 -DNDEBUG
 endif
@@ -18,7 +18,8 @@ DEPENDENCIES := $(patsubst %.c,%.d,${SOURCES})
 
 INCLUDE_FLAGS := -I./include -I./simple_dict/include
 WARNING_FLAGS := -Wextra -Wall -Wshadow -Wdouble-promotion -Wpadded \
-	-Wformat=2 -Wformat-truncation -fno-common -Wconversion
+	-Wformat=2 -Wformat-truncation -fno-common -Wconversion -Warray-bounds \
+	-Wno-aggressive-loop-optimizations
 CFLAGS += ${WARNING_FLAGS} ${INCLUDE_FLAGS} ${COMMON_FLAGS}
 export
 
