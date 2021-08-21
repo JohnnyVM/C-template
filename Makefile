@@ -24,11 +24,11 @@ CFLAGS += ${WARNING_FLAGS} ${INCLUDE_FLAGS} ${COMMON_FLAGS}
 export
 
 .PHONY: clean tests coverage library
-library: ${OBJECTS} | lib
-	ar -rc lib/lib${PROJECT_NAME}.a $^
-
 ${OBJECTS}: %.o: %.c
 	${CC} -Werror ${CFLAGS} -MMD -c $< -o $@
+
+library: ${OBJECTS} | lib
+	ar -rc lib/lib${PROJECT_NAME}.a $^
 
 tests: ${OBJECTS}
 	${MAKE} -C tests tests
