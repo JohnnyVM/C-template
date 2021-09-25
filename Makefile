@@ -31,7 +31,7 @@ DEPENDENCIES := $(patsubst %.c,%.d,${C_SOURCES}) $(patsubst %.cpp,%.d,${CPP_SOUR
 INCLUDE_FLAGS := -I./include -I./simple_dict/include
 WARNING_FLAGS := -Wextra -Wall -Wshadow -Wdouble-promotion \
 	-Wformat=2 -Wformat-truncation -fno-common -Wconversion -Warray-bounds \
-	-Wtrampolines
+	-Wtrampolines -Wswitch-enum
 CFLAGS += ${WARNING_FLAGS} ${INCLUDE_FLAGS} ${COMMON_FLAGS}
 CPPFLAGS += ${CFLAGS}
 
